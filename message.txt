@@ -1,5 +1,6 @@
- this module requires cbsdpuppet1 module, please create them if not exist
- via jconstruct-tui -> profile -> cbsdpuppet
+
+ this module requires the cbsdpuppet1 jail, create it if it doesn't exist
+ via: cbsd jconstruct-tui -> profile -> cbsdpuppet
 
  please use:
    cbsd forms module=redis jname=YOUR_JAIL
