@@ -1,0 +1,6 @@
+ this module requires cbsdpuppet1 module, please create them if not exist
+ via jconstruc-tui -> profile -> cbsdpuppet
+
+ please use:
+   cbsd forms module=redis jname=YOUR_JAIL
+
