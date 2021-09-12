@@ -108,7 +108,7 @@ EOF
 
 ${SQLITE3_CMD} ${FORM_PATH}/${HELPER}.sqlite << EOF
 BEGIN TRANSACTION;
-INSERT INTO system ( helpername, version, packages, have_restart ) VALUES ( "redis", "201607", "databases/redis", "service redis restart" );
+INSERT INTO system ( helpername, version, packages, have_restart ) VALUES ( "redis", "201607", "databases/redis", "redis" );
 COMMIT;
 EOF
 
