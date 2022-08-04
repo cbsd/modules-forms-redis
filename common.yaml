@@ -7,3 +7,5 @@ redis::log_level: #log_level#
 redis::syslog_enabled: #syslog_enabled#
 redis::timeout: #timeout#
 redis::slave_priority: #slave_priority#
+redis::requirepass: #requirepass#
+redis::protected_mode: #protected_mode#

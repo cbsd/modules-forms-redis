@@ -47,11 +47,15 @@ INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,a
 INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( "forms", 1,10,"-","Replication:",'-','','',1, "maxlen=128", "delimer", "", "" );
 INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( "forms", 1,11,"slave_priority","slave-priority",'100','','',1, "maxlen=128", "inputbox", "", "" );
 INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( "forms", 1,12,"slaveof","slaveof: ip port",'','','',0, "maxlen=128", "inputbox", "", "" );
+INSERT INTO forms ( mytable,group_id,order_id,param,desc,def,cur,new,mandatory,attr,type,link,groupname ) VALUES ( "forms", 1,13,"protected_mode","protected_mode",'2','2','',2, "maxlen=128", "radio", "protected_mode_falsetrue", "" );
 COMMIT;
 EOF
 
 # syslog_noyes
 /usr/local/bin/cbsd ${miscdir}/updatesql ${FORM_PATH}/${HELPER}.sqlite ${distsharedir}/forms_yesno.schema syslog_noyes
+
+# protected_mode_falsetrue
+/usr/local/bin/cbsd ${miscdir}/updatesql ${FORM_PATH}/${HELPER}.sqlite ${distsharedir}/forms_yesno.schema protected_mode_falsetrue
 
 # autocomplete
 /usr/local/bin/cbsd ${miscdir}/updatesql ${FORM_PATH}/${HELPER}.sqlite ${distsharedir}/forms_yesno.schema bind_autocomplete
@@ -90,6 +94,14 @@ ${SQLITE3_CMD} ${FORM_PATH}/${HELPER}.sqlite << EOF
 BEGIN TRANSACTION;
 INSERT INTO syslog_noyes ( text, order_id ) VALUES ( "no", 1 );
 INSERT INTO syslog_noyes ( text, order_id ) VALUES ( "yes", 0 );
+COMMIT;
+EOF
+
+
+${SQLITE3_CMD} ${FORM_PATH}/${HELPER}.sqlite << EOF
+BEGIN TRANSACTION;
+INSERT INTO protected_mode_falsetrue ( text, order_id ) VALUES ( "false", 1 );
+INSERT INTO protected_mode_falsetrue ( text, order_id ) VALUES ( "true", 0 );
 COMMIT;
 EOF
 
