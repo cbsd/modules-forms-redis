@@ -1,3 +1,6 @@
+redis::service_manage: true
+redis::service_ensure: running
+redis::ulimit_managed: false
 redis::bind: #bind#
 redis::port: #port#
 redis::maxmemory: #maxmemory#
